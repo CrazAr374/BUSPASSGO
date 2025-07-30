@@ -33,11 +33,8 @@ import {
   ThumbsUp,
 } from 'lucide-react';
 
-export default function ApplicationDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ApplicationDetailPage() {
+  const params = useParams<{ id: string }>();
   const { toast } = useToast();
   const [analysis, setAnalysis] = useState<FraudDetectionOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -238,7 +235,7 @@ export default function ApplicationDetailPage({
                 disabled={isLoading}
                 className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
               >
-                {isLoading ? 'Analyzing...' : 'Run Fraud Analysis'}
+                {isLoading ? "Analyzing..." : "Run Fraud Analysis"}
               </Button>
             </CardFooter>
           </Card>
