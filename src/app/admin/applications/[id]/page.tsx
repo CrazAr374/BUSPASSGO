@@ -7,6 +7,7 @@ import {
   predictFraud,
   type FraudDetectionOutput,
 } from '@/ai/flows/fraud-detection';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -29,7 +30,6 @@ import {
   ShieldCheck,
   ThumbsDown,
   ThumbsUp,
-  User,
 } from 'lucide-react';
 
 export default function ApplicationDetailPage({
@@ -37,13 +37,12 @@ export default function ApplicationDetailPage({
 }: {
   params: { id: string };
 }) {
+  const { id } = params;
   const { toast } = useToast();
   const [analysis, setAnalysis] = useState<FraudDetectionOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const application = applications.find(
-    (app) => app.id.toString() === params.id
-  );
+  const application = applications.find((app) => app.id.toString() === id);
   const route = application
     ? routes.find((r) => r.id === application.routeId)
     : null;
