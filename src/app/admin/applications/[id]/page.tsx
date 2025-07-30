@@ -37,12 +37,13 @@ export default function ApplicationDetailPage({
 }: {
   params: { id: string };
 }) {
-  const { id } = params;
   const { toast } = useToast();
   const [analysis, setAnalysis] = useState<FraudDetectionOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const application = applications.find((app) => app.id.toString() === id);
+  const application = applications.find(
+    (app) => app.id.toString() === params.id
+  );
   const route = application
     ? routes.find((r) => r.id === application.routeId)
     : null;
